@@ -1,5 +1,6 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-    forecast = ForecastFacade.get_city_forecast(params[:location])
+    location = MapFacade.get_lat_long(params[:location])
+    # forecast = ForecastFacade.get_city_forecast(location)
   end
 end
