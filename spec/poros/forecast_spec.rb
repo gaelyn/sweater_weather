@@ -1476,7 +1476,8 @@ RSpec.describe 'CurrentWeather' do
     ]
 }
       forecast = Forecast.new(data)
-      expect(forecast.current_weather).to be_A CurrentWeather
+      expect(forecast.current_weather).to be_instance_of CurrentWeather
+      expect(forecast.daily_weather).to be_an Array
     end
   end
 end
