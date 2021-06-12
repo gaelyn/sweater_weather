@@ -1476,7 +1476,7 @@ RSpec.describe 'CurrentWeather' do
     ]
 }
       forecast = Forecast.new(data)
-      require "pry"; binding.pry
+      expect(forecast.current_weather).to be_A CurrentWeather
     end
   end
 end
