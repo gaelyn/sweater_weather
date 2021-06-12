@@ -1,18 +1,18 @@
 class CurrentWeather
-  # attr_reader :datetime,
-  #             :sunrise,
-  #             :sunset,
-  #             :temp,
-  #             :feels_like,
-  #             :humidity,
-  #             :uvi,
-  #             :visibility,
-  #             :conditions,
-  #             :icon
+  attr_reader :datetime,
+              :sunrise,
+              :sunset,
+              :temp,
+              :feels_like,
+              :humidity,
+              :uvi,
+              :visibility,
+              :conditions,
+              :icon
   def initialize(data)
-    @datetime = data[:dt]
-    @sunrise = data[:sunrise]
-    @sunset = data[:sunset]
+    @datetime = Time.at(data[:dt]).localtime
+    @sunrise = Time.at(data[:sunrise]).localtime
+    @sunset = Time.at(data[:sunset]).localtime
     @temp = data[:temp]
     @feels_like = data[:feels_like]
     @humidity = data[:humidity]
@@ -23,8 +23,6 @@ class CurrentWeather
   end
 
   def datetime
-    require "pry"; binding.pry
-  
     Time.at(@datetime).utc.to_datetime
   end
 
