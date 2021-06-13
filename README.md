@@ -47,7 +47,8 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
-| `POST`    | `/api/v1/users`                         |  Creates user in DB and returns api_key  |
+| `POST`   | `/api/v1/users`                          |  Creates user in DB and returns user email and api_key  |
+| `POST`   | `/api/v1/sessions`                       |  Creates a session and returns user email and api_key |
 
 
 ## Examples
@@ -194,7 +195,7 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 }
 ```
 
-### Create a User
+### Create a User or User login
 
 ```
 {
