@@ -10,6 +10,5 @@ RSpec.describe 'WeatherFacade' do
     expect(response.daily_weather.first).to be_a(DailyWeather)
     expect(response.hourly_weather).to be_an(Array)
     expect(response.hourly_weather.first).to be_a(HourlyWeather)
-    # require "pry"; binding.pry
   end
 end
