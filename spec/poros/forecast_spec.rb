@@ -6,7 +6,7 @@ RSpec.describe 'CurrentWeather' do
       data = {
     "lat": 39.7392,
     "lon": -104.9847,
-    "timezone": "America/Denver",
+    "stimezone": "America/Denver",
     "timezone_offset": -21600,
     "current": {
         "dt": 1623532152,
@@ -1478,7 +1478,11 @@ RSpec.describe 'CurrentWeather' do
       forecast = Forecast.new(data)
       expect(forecast.current_weather).to be_instance_of CurrentWeather
       expect(forecast.daily_weather).to be_an Array
+      expect(forecast.daily_weather.count).to eq(5)
+      expect(forecast.daily_weather.first).to be_a(DailyWeather)
       expect(forecast.hourly_weather).to be_an Array
+      expect(forecast.hourly_weather.count).to eq(8)
+      expect(forecast.hourly_weather.first).to be_a(HourlyWeather)
     end
   end
 end

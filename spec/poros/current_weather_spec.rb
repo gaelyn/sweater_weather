@@ -24,7 +24,7 @@ RSpec.describe 'CurrentWeather' do
       expect(current_weather.datetime).to eq("2021-06-12 13:23:18 -0500")
       expect(current_weather.sunrise).to eq("2021-06-12 06:31:29 -0500")
       expect(current_weather.sunset).to eq("2021-06-12 21:28:26 -0500")
-      expect(current_weather.temp).to eq(82.89)
+      expect(current_weather.temperature).to eq(82.89)
       expect(current_weather.feels_like).to eq(80.82)
       expect(current_weather.humidity).to eq(26)
       expect(current_weather.uvi).to eq(10.67)
