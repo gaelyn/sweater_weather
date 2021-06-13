@@ -177,9 +177,21 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 ### Background Image for Denver, CO
 
 ```
-
-
-
+{
+    "data": {
+        "id": null,
+        "type": "image",
+        "attributes": {
+            "location": "denver,co",
+            "image_url": "https://images.unsplash.com/photo-1619856699906-09e1f58c98b1?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMzkyNjF8MHwxfHNlYXJjaHwxfHxkZW52ZXIlMkNjb3xlbnwwfHx8fDE2MjM2MDA5MDM&ixlib=rb-1.2.1&q=85",
+            "credit": {
+                "source": "unsplash.com",
+                "author": "Ryan De Hamer",
+                "author_profile": "https://unsplash.com/@rdehamer"
+            }
+        }
+    }
+}
 ```
 
 ### Create a User
@@ -195,8 +207,6 @@ The following are all API endpoints. Note, some endpoints have optional or requi
         }
     }
 }
-
-
 ```
 
 ## Running the Tests
