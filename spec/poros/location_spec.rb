@@ -10,7 +10,6 @@ RSpec.describe 'Location' do
       denver = Location.new(location_info)
       expect(denver.lat).to eq(39.738453)
       expect(denver.long).to eq(-104.984853)
-
     end
   end
 end
