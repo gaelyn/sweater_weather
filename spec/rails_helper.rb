@@ -75,8 +75,10 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
-  config.filter_sensitive_data('<api_key_name>') { ENV['figaro_masked_variable'] }
+  config.filter_sensitive_data('<appid>') { ENV['WEATHER_KEY'] }
+  config.filter_sensitive_data('<key>') { ENV['MAP_KEY'] }
   config.configure_rspec_metadata!
+  config.allow_http_connections_when_no_cassette = true
   # This line lets cassettes re-record as needed
   # config.default_cassette_options = { record: :new_episodes, re_record_interval: 7.days }
 end
