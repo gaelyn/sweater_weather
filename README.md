@@ -35,16 +35,20 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
-| `GET`    | `/api/v1/forecast?location=<location>`                       | Retrieves current, daily, and hourly forecast for location |
+| `GET`    | `/api/v1/forecast?location=<location>`   | Retrieves current, daily, and hourly forecast for location |
 
 ### Background Image:
 
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
-| `GET`    | `/api/v1/`                             |                      |
+| `GET`    | `/api/v1/backgrounds?location=<location>`| Retrieves appropriate background image for city|
 
+### Users:
 
-                    |
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `POST`    | `/api/v1/users`                         |  Creates user in DB and returns api_key  |
+
 
 ## Examples
 
@@ -173,6 +177,24 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 ### Background Image for Denver, CO
 
 ```
+
+
+
+```
+
+### Create a User
+
+```
+{
+    "data": {
+        "id": "1",
+        "type": "user",
+        "attributes": {
+            "email": "whatever@example.com",
+            "api_key": "6Qyioc4xNsnraU2xQG4AfRgY"
+        }
+    }
+}
 
 
 ```
