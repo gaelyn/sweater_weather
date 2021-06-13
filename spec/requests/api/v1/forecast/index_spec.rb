@@ -45,4 +45,12 @@ RSpec.describe 'Forecast Index' do
       expect(forecast[:data][:attributes][:hourly_weather].first).to_not have_key(:wind_speed)
     end
   end
+
+  describe 'Sad Path' do
+    it 'returns an error if no locaiton provided' do
+      get '/api/v1/forecast'
+      expect(response.body).to eq("{\"errors\":\"Location not given\"}")
+      expect(response.status).to eq(400)
+    end
+  end
 end
