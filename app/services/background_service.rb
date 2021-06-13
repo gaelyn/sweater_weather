@@ -1,7 +1,7 @@
 class BackgroundService
   class << self
     def fetch_background_image(location)
-      response = conn.get("/search/photos?client_id=#{ENV['IMAGE_KEY']}&query=denver,co")
+      response = conn.get("/search/photos?client_id=#{ENV['IMAGE_KEY']}&query=#{location}")
       parse_json(response)
     end
 
