@@ -5,6 +5,7 @@ RSpec.describe "Map Service" do
     it 'can return lat/long for a given city and state' do
       results = MapService.fetch_address("Denver,CO")
       expect(results).to be_a(Hash)
+      expect(results[:results].first[:providedLocation][:location]).to eq("Denver,CO")
     end
   end
 end
