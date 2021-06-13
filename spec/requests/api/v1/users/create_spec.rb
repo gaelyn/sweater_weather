@@ -18,6 +18,7 @@ RSpec.describe 'Users Create' do
       expect(response).to be_successful
       expect(response.status).to eq(201)
       expect(user[:data][:attributes]).to have_key(:email)
+      expect(user[:data][:attributes]).to have_key(:api_key)
       expect(user[:data][:attributes]).to_not have_key(:password)
     end
   end
