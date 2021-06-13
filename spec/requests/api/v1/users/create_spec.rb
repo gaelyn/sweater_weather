@@ -23,17 +23,70 @@ RSpec.describe 'Users Create' do
     end
   end
 
-  # describe 'Sad Path' do
-  #   it 'shows error if missing field' do
-  #   end
-  #
-  #   it "shows error if passwords don't match" do
-  #   end
-  #
-  #   it 'shows error if user already exists with given email' do
-  #   end
-  #
-  #   it 'shows error if email is invalid format' do
-  #   end
-  # end
+  describe 'Sad Path' do
+    it 'shows error if missing information' do
+      headers = {
+        'Content-Type' => "application/json",
+        'Accept' => "application/json"
+      }
+
+      body = {
+        "email": "whatever@example.com",
+        "password": "",
+        "password_confirmation": ""
+      }
+      post '/api/v1/users', params: body.to_json
+      expect(response.body).to eq("{\"errors\":\"Unable to create user\"}")
+      expect(response.status).to eq(400)
+    end
+
+    it "shows error if passwords don't match" do
+      headers = {
+        'Content-Type' => "application/json",
+        'Accept' => "application/json"
+      }
+
+      body = {
+        "email": "whatever@example.com",
+        "password": "password",
+        "password_confirmation": "wordpass"
+      }
+      post '/api/v1/users', params: body.to_json
+      expect(response.body).to eq("{\"errors\":\"Unable to create user\"}")
+      expect(response.status).to eq(400)
+    end
+
+    it 'shows error if user already exists with given email' do
+      User.create!(email: "whatever@example.com", password: "password", password_confirmation: "password", api_key: "xxxxxx")
+      headers = {
+        'Content-Type' => "application/json",
+        'Accept' => "application/json"
+      }
+
+      body = {
+        "email": "whatever@example.com",
+        "password": "password",
+        "password_confirmation": "password"
+      }
+      post '/api/v1/users', headers: headers, params: body.to_json
+      expect(response.body).to eq("{\"errors\":\"Email already registered\"}")
+      expect(response.status).to eq(409)
+    end
+
+    it 'shows error if email is invalid format' do
+      headers = {
+        'Content-Type' => "application/json",
+        'Accept' => "application/json"
+      }
+
+      body = {
+        "email": "example.com",
+        "password": "password",
+        "password_confirmation": "password"
+      }
+      post '/api/v1/users', headers: headers, params: body.to_json
+      expect(response.body).to eq("{\"errors\":\"Unable to create user\"}")
+      expect(response.status).to eq(400)
+    end
+  end
 end
