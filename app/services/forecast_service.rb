@@ -1,10 +1,10 @@
 class ForecastService
   class << self
     def fetch_forecast(lat,long)
-      response = conn.get("/data/2.5/onecall?lat=#{lat}&lon=#{long}&exclude=minutely&appid=#{ENV['WEATHER_KEY']}&units=imperial")
+      response = conn.get("/data/2.5/onecall?lat=#{lat}&lon=#{long}&exclude=minutely,alerts&appid=#{ENV['WEATHER_KEY']}&units=imperial")
       parse_json(response)
     end
-    
+
     private
 
     def conn
