@@ -1,6 +1,6 @@
 class DailyWeather
   def initialize(data)
-    @date = Time.at(data[:dt]).localtime
+    @date = Time.at(data[:dt]).strftime("%Y-%m-%d")
     @sunrise = Time.at(data[:sunrise]).localtime
     @sunset = Time.at(data[:sunset]).localtime
     @max_temp = data[:temp][:max]
