@@ -48,6 +48,7 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.2.5.0)
       execjs (< 2.8.0)
+    bcrypt (3.1.16)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -73,6 +74,12 @@ GEM
       rexml
     crass (1.0.6)
     csv (3.2.0)
+    devise (4.8.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.4.4)
     docile (1.4.0)
     erubi (1.10.0)
@@ -148,6 +155,7 @@ GEM
     orderly (0.1.1)
       capybara (>= 1.1)
       rspec (>= 2.14)
+    orm_adapter (0.5.0)
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -194,6 +202,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rexml (3.2.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -266,6 +277,8 @@ GEM
       thread_safe (~> 0.1)
     unicode-display_width (2.0.0)
     vcr (6.0.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     webmock (3.13.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -282,11 +295,13 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails (= 10.2.5.0)
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
   capybara
   coffee-rails (~> 4.2)
   csv
+  devise
   factory_bot_rails
   faker
   faraday
