@@ -18,8 +18,11 @@ RSpec.describe 'Backgrounds Index' do
     end
   end
 
-  # describe 'Sad Path' do
-  #   it 'shows error if no location given' do
-  #   end
-  # end
+  describe 'Sad Path' do
+    it 'shows error if no location given' do
+      get '/api/v1/backgrounds'
+      expect(response.body).to eq("{\"errors\":\"Location not given\"}")
+      expect(response.status).to eq(400)
+    end
+  end
 end
