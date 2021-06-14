@@ -12,7 +12,7 @@ RSpec.describe 'Book' do
       ]
 
       denver_books = Book.new("denver,co", 1, books)
-      expect(denver_books.location).to eq("denver,co")
+      expect(denver_books.destination).to eq("denver,co")
       expect(denver_books.total_books_found).to eq(1)
       expect(denver_books.books).to be_an(Array)
     end

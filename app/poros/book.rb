@@ -1,8 +1,8 @@
 class Book
-  attr_reader :id, :location, :total_books_found
+  attr_reader :id, :destination, :total_books_found
   def initialize(location, results, books)
     @id = nil
-    @location = location
+    @destination = location
     @total_books_found = results
     @books = books
   end
