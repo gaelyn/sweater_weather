@@ -27,22 +27,22 @@ RSpec.describe 'Book Search' do
   end
 
   describe 'Sad Path' do
-    it 'returns an error if no locaiton provided' do
+    it 'returns an error if locaiton or quantity not provided' do
       get '/api/v1/book-search', params: { quantity: 5 }
       expect(response.body).to eq("{\"errors\":\"Location and quantity must be provided\"}")
       expect(response.status).to eq(400)
     end
 
-    xit 'returns an error if locaiton is empty string' do
+    it 'returns an error if locaiton or quantity is empty string' do
       get '/api/v1/book-search', params: { location: "", quantity: 5 }
+      expect(response.body).to eq("{\"errors\":\"Location or quantity invalid\"}")
+      expect(response.status).to eq(400)
     end
 
-    xit 'returns an error if no quantity provided' do
-      get '/api/v1/book-search', params: { location: "denver,co" }
-    end
-
-    xit 'returns an error if quantity is not an intiger' do
+    it 'returns an error if quantity is not an integer' do
       get '/api/v1/book-search', params: { location: "denver,co", quantity: "hello" }
+      expect(response.body).to eq("{\"errors\":\"Location or quantity invalid\"}")
+      expect(response.status).to eq(400)
     end
   end
 end
