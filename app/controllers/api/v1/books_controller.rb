@@ -5,9 +5,7 @@ class Api::V1::BooksController < ApplicationController
     elsif params[:location].empty? || params[:quantity].empty? || params[:quantity].to_i <= 0
       render json: { errors: 'Location or quantity invalid' }, status: :bad_request
     else
-      location = MapFacade.get_lat_long(params[:location])
-      forecast = ForecastFacade.get_local_weather(location.lat,location.long).current_weather
-      books = BookFacade.get_books_by_location(params[:location], params[:quantity], forecast)
+      books = BookFacade.get_books_by_location(params[:location], params[:quantity])
       render json: BooksSerializer.new(books)
     end
   end

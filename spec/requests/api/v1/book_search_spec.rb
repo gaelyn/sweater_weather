@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Book Search' do
   describe 'Happy Path' do
-    it 'can return books about given destination' do
+    it 'can return books about given destination', :vcr do
       get '/api/v1/book-search', params: { location: "denver,co", quantity: 5 }
       books = JSON.parse(response.body, symbolize_names: true)
       expect(response).to be_successful
@@ -27,19 +27,19 @@ RSpec.describe 'Book Search' do
   end
 
   describe 'Sad Path' do
-    it 'returns an error if locaiton or quantity not provided' do
+    it 'returns an error if locaiton or quantity not provided', :vcr do
       get '/api/v1/book-search', params: { quantity: 5 }
       expect(response.body).to eq("{\"errors\":\"Location and quantity must be provided\"}")
       expect(response.status).to eq(400)
     end
 
-    it 'returns an error if locaiton or quantity is empty string' do
+    it 'returns an error if locaiton or quantity is empty string', :vcr do
       get '/api/v1/book-search', params: { location: "", quantity: 5 }
       expect(response.body).to eq("{\"errors\":\"Location or quantity invalid\"}")
       expect(response.status).to eq(400)
     end
 
-    it 'returns an error if quantity is not an integer' do
+    it 'returns an error if quantity is not an integer', :vcr do
       get '/api/v1/book-search', params: { location: "denver,co", quantity: "hello" }
       expect(response.body).to eq("{\"errors\":\"Location or quantity invalid\"}")
       expect(response.status).to eq(400)
