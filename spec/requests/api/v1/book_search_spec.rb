@@ -18,11 +18,31 @@ RSpec.describe 'Book Search' do
       expect(books[:data][:attributes][:forecast]).to be_a(Hash)
       expect(books[:data][:attributes][:forecast]).to have_key(:summary)
       expect(books[:data][:attributes][:forecast]).to have_key(:temperature)
-      
+
       expect(books[:data][:attributes][:books]).to be_an(Array)
       expect(books[:data][:attributes][:books].first).to have_key(:isbn)
       expect(books[:data][:attributes][:books].first).to have_key(:title)
       expect(books[:data][:attributes][:books].first).to have_key(:publisher)
+    end
+  end
+
+  describe 'Sad Path' do
+    it 'returns an error if no locaiton provided' do
+      get '/api/v1/book-search', params: { quantity: 5 }
+      expect(response.body).to eq("{\"errors\":\"Location and quantity must be provided\"}")
+      expect(response.status).to eq(400)
+    end
+
+    xit 'returns an error if locaiton is empty string' do
+      get '/api/v1/book-search', params: { location: "", quantity: 5 }
+    end
+
+    xit 'returns an error if no quantity provided' do
+      get '/api/v1/book-search', params: { location: "denver,co" }
+    end
+
+    xit 'returns an error if quantity is not an intiger' do
+      get '/api/v1/book-search', params: { location: "denver,co", quantity: "hello" }
     end
   end
 end
