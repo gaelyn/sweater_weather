@@ -1,5 +1,7 @@
 ## About
+This is a fictional backend for building an application to plan road trips. This app will allow users to see the current weather as well as the forecasted weather at the destination.
 
+This project utilizes service-oriented architecture. The front-end will communicate with the back-end through an API. The goal of this project was to expose that API in a way that satisfies the front-end team’s requirements.
 
 ## Table of contents
 [**About**](#about) |
@@ -19,7 +21,7 @@
 * Rails 5.2.6
 
 ## Setup
-If you are running this API locally, follow the steps below:
+To run locally, follow the steps below:
   1. Fork and clone this repo
   2. Install gem packages by running `bundle`
   3. Setup the database: `rails db:(drop,create,migrate,seed)` or `rails db:setup`
@@ -49,6 +51,12 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 | -------- | ---------------------------------------- | ---------------------------------------- |
 | `POST`   | `/api/v1/users`                          |  Creates user in DB and returns user email and api_key  |
 | `POST`   | `/api/v1/sessions`                       |  Creates a session and returns user email and api_key |
+
+### Road Trips:
+
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `POST`   | `/api/v1/road_trip`                      |  Responds with road trip data including travel time and weather for destination at the eta |
 
 
 ## Examples
@@ -208,6 +216,10 @@ The following are all API endpoints. Note, some endpoints have optional or requi
         }
     }
 }
+```
+
+### Create a Road Trip
+```
 ```
 
 ## Running the Tests
