@@ -19,13 +19,13 @@ RSpec.describe 'Map Facade' do
     expect(forecast.count).to eq(48)
   end
 
-  it 'returns a route between two given destinations for long trip' do
+  it 'returns a route between two given destinations for long trip', :vcr do
     route = MapFacade.get_road_trip("New York,NY", "Los Angeles,CA")
     expect(route).to be_a(Route)
     expect(route.weather_at_eta).to be_a(Hash)
   end
 
-  it 'accounts for edge case of oversees trip' do
+  it 'accounts for edge case of oversees trip', :vcr do
     route = MapFacade.get_road_trip("New York,NY", "London,UK")
     expect(route).to be_a(RouteError)
     expect(route.travel_time).to eq("impossible")
