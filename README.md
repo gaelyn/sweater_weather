@@ -1,14 +1,17 @@
 ## About
-This is a fictional backend for building an application to plan road trips. This app will allow users to see the current weather as well as the forecasted weather at the destination.
+![Image](https://media.giphy.com/media/26u6dryuZH98z5KuY/giphy.gif)
+<iframe src="https://giphy.com/embed/26u6dryuZH98z5KuY" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nycgifathon-26u6dryuZH98z5KuY">via GIPHY</a></p>
 
-This project utilizes service-oriented architecture. The front-end will communicate with the back-end through an API. The goal of this project was to expose that API in a way that satisfies the front-end team’s requirements.
+Sweater Weather is a fictional backend for an application to plan road trips. This app will allow users to see the current weather as well as the forecasted weather at the destination.  
+The front-end will communicate with the back-end through an API. The goal of this project is to build and expose that API in a way that satisfies the front-end team’s requirements using service oriented architecture.
 
 ## Table of contents
 [**About**](#about) |
+[**Getting Started**](#getting-started) |
 [**Versions**](#versions) |
 [**Setup**](#setup) |
 [**Endpoints**](#endpoints) |
-[**Examples**](#examples) |
+[**Examples**](#example-responses) |
 [**Tests**](#running-the-tests) |
 [**Deployment**](#deployment) |
 [**Developers**](#developers) |
@@ -25,17 +28,20 @@ To run locally, follow the steps below:
   1. Fork and clone this repo
   2. Install gem packages by running `bundle`
   3. Setup the database: `rails db:(drop,create,migrate,seed)` or `rails db:setup`
-  4. Run command `rails s` and navigate to http://localhost:3000 to consume API endpoints below
+  4. You will need API keys from [OpenWeatherAPI](), [MapQuestAPI](), and [UnsplashAPI]().
+  5. Run `bundle exec figaro install` and add your keys to the `config/application.yml` file and name them `WEATHER_KEY`,`MAP_KEY`, and `IMAGE_KEY` accordingly.
+  6. Run command `rails s` and navigate to http://localhost:3000 to consume API endpoints below.
 
-If you are running the API via [Heroku](), simply consume endpoints below.
+  NOTE: If you are running the API via [Heroku](https://sweater-weather-2102.herokuapp.com), simply consume endpoints below.
 
 ## Endpoints
 The following are all API endpoints. Note, some endpoints have optional or required query parameters.
-- All endpoints run off base connector http://localhost:3000 on local or https://.herokuapp.com/ on Heroku
+- All endpoints run off base connector http://localhost:3000 on local or https://sweater-weather-2102.herokuapp.com on Heroku.
+- Example responses can be seen after endpoints.
 
 ### Forecast:
 
-| Method   | URL                                      | Description                              |
+| Method   | URI                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
 | `GET`    | `/api/v1/forecast?location=<location>`   | Retrieves current, daily, and hourly forecast for location |
 
@@ -52,14 +58,56 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 | `POST`   | `/api/v1/users`                          |  Creates user in DB and returns user email and api_key  |
 | `POST`   | `/api/v1/sessions`                       |  Creates a session and returns user email and api_key |
 
+Request to create a user:
+```
+headers:
+Content-Type: application/json
+Accept: application/json
+
+body:
+{
+  "email": "whatever@example.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+```
+
+Request to login a user:
+```
+headers:
+Content-Type: application/json
+Accept: application/json
+
+body:
+{
+  "email": "whatever@example.com",
+  "password": "password"
+}
+```
+
 ### Road Trips:
 
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
 | `POST`   | `/api/v1/road_trip`                      |  Responds with road trip data including travel time and weather for destination at the eta |
 
+Request:
+```
+headers:
+Content-Type: application/json
+Accept: application/json
 
-## Examples
+body:
+{
+  "origin": "Denver,CO",
+  "destination": "Pueblo,CO",
+  "api_key": "jgn983hy48thw9begh98h4539h4"
+}
+
+```
+
+
+## Example Responses
 
 ### Forecast for Denver, Colorado:
 
@@ -243,11 +291,18 @@ Run all tests in application with `bundle exec rspec`. When test is complete, ru
 
 
 ## Deployment
+- This project was deployed with [Heroku](https://sweater-weather-2102.herokuapp.com)
 
 
 
 ## Built Using
 - Ruby on Rails
+
+## Notable Gems Used
+- Bcrypt
+- VCR
+- Faraday
+- fast_jsonapi
 
 ## Developers
 * Gaelyn Cooper [GitHub](https://github.com/gaelyn) • [LinkedIn](https://www.linkedin.com/in/gaelyn-cooper/)
@@ -256,4 +311,5 @@ Run all tests in application with `bundle exec rspec`. When test is complete, ru
 
 ## Acknowledgments
 
-OpenWeatherAPI MapQuestAPI UnplashAPI
+This project utilized the following external APIs: [OpenWeather One Call API](https://openweathermap.org/api/one-call-api), [MapQuest API](https://developer.mapquest.com/documentation/geocoding-api/), [UnplashAPI](https://unsplash.com/documentation).
+- The photographer credit requirements for Unsplash can be found [here](https://help.unsplash.com/en/articles/2612337-do-i-have-to-give-credit-to-a-photographer-when-i-use-their-photo)
