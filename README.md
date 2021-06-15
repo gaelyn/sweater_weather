@@ -220,6 +220,21 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 
 ### Create a Road Trip
 ```
+{
+    "data": {
+        "id": null,
+        "type": "roadtrip",
+        "attributes": {
+            "start_city": "Denver,CO",
+            "end_city": "Pueblo,CO",
+            "travel_time": "01 hour(s) and 44 minutes",
+            "weather_at_eta": {
+                "temperature": 97.16,
+                "conditions": "Clear"
+            }
+        }
+    }
+}
 ```
 
 ## Running the Tests
@@ -241,4 +256,4 @@ Run all tests in application with `bundle exec rspec`. When test is complete, ru
 
 ## Acknowledgments
 
-OpenWeatherAPI MapQuestAPI
+OpenWeatherAPI MapQuestAPI UnplashAPI
