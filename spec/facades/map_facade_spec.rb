@@ -9,5 +9,10 @@ RSpec.describe 'Map Facade' do
   it 'returns a route between two given destinations' do
     route = MapFacade.get_road_trip("Denver,CO", "Pueblo,CO")
     expect(route).to be_a(Route)
+    expect(route.weather_at_eta).to be_a(Hash)
+  end
+
+  xit 'returns hourly forecast for destination' do
+    forecast = MapFacade.forecast("Pueblo,CO")
   end
 end
