@@ -47,7 +47,7 @@ RSpec.describe 'Forecast Index' do
   end
 
   describe 'Sad Path' do
-    it 'returns an error if no locaiton provided' do
+    it 'returns an error if no locaiton provided', :vcr do
       get '/api/v1/forecast'
       expect(response.body).to eq("{\"errors\":\"Location not given\"}")
       expect(response.status).to eq(400)
