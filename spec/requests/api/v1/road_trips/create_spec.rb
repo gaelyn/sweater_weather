@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Raod Trip Create' do
+RSpec.describe 'Road Trip Create' do
   describe 'Happy Paths' do
     it 'can create a road trip response' do
       headers = {
