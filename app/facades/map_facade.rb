@@ -14,7 +14,7 @@ class MapFacade
 
     def forecast(point_b)
       location = MapFacade.get_lat_long(point_b)
-      ForecastFacade.get_local_weather(location.lat,location.long).hourly_weather
+      ForecastFacade.get_hourly_weather_for_trip(location.lat,location.long)
     end
   end
 end

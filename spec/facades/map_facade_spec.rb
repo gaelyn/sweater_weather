@@ -15,7 +15,13 @@ RSpec.describe 'Map Facade' do
   it 'returns hourly forecast for destination', :vcr do
     forecast = MapFacade.forecast("Pueblo,CO")
     expect(forecast).to be_an(Array)
-    expect(forecast.first).to be_an(HourlyWeather)
-    expect(forecast.count).to eq(8)
+    expect(forecast.first).to be_a(Hash)
+    expect(forecast.count).to eq(48)
+  end
+
+  it 'returns a route between two given destinations for long trip' do
+    route = MapFacade.get_road_trip("New York,NY", "Los Angeles,CA")
+    expect(route).to be_a(Route)
+    expect(route.weather_at_eta).to be_a(Hash)
   end
 end
