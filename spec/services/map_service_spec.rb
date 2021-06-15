@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Map Service" do
   describe "return latitude and longitude", :vcr do
-    it 'can return lat/long for a given city and state' do
+    it 'can return lat/long for a given city and state', :vcr do
       results = MapService.fetch_address("Denver,CO")
       expect(results).to be_a(Hash)
       expect(results[:results].first[:providedLocation][:location]).to eq("Denver,CO")
@@ -10,13 +10,13 @@ RSpec.describe "Map Service" do
   end
 
   describe 'get road trip info' do
-    it 'can return data about a route between two points' do
+    it 'can return data about a route between two points', :vcr do
       results = MapService.fetch_route("Denver,CO", "Pueblo,CO")
       expect(results).to be_a(Hash)
       expect(results).to have_key(:route)
     end
 
-    it 'can return data for a very long trip' do
+    it 'can return data for a very long trip', :vcr do
       results = MapService.fetch_route("New York,NY", "Los Angeles,CA")
       expect(results).to be_a(Hash)
       expect(results).to have_key(:route)
