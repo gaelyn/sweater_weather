@@ -10,11 +10,15 @@ class Route
   end
 
   def weather_at_eta
-    hourly_weather = HourlyWeather.new(@weather_at_eta)
+    if @weather_at_eta.nil?
+      "Forecast not available"
+    else
+      hourly_weather = HourlyWeather.new(@weather_at_eta)
 
-    {
-      temperature: hourly_weather.temperature,
-      conditions: hourly_weather.conditions
-    }
+      {
+        temperature: hourly_weather.temperature,
+        conditions: hourly_weather.conditions
+      }
+    end
   end
 end

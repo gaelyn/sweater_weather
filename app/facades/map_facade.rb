@@ -7,12 +7,12 @@ class MapFacade
     end
 
     def get_road_trip(point_a, point_b)
-      json = MapService.fetch_route(point_a, point_b)[:route]
-      if json[:routeError][:errorCode] == 2
+      json = MapService.fetch_route(point_a, point_b)
+      if json[:info][:statuscode] != 0
         RouteError.new(point_a,point_b)
       else
         forecast = forecast(point_b)
-        Route.new(json, forecast)
+        Route.new(json[:route], forecast)
       end
     end
 
