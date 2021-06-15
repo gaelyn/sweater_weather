@@ -4,5 +4,9 @@ class ForecastFacade
       json = ForecastService.fetch_forecast(lat,long)
       Forecast.new(json)
     end
+
+    def get_hourly_weather_for_trip(lat,long)
+      json = ForecastService.fetch_forecast(lat,long)[:hourly]
+    end
   end
 end

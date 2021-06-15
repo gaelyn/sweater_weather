@@ -416,34 +416,41 @@ RSpec.describe 'Route' do
                     }
                 }
 
-      weather_data = hourly = {
-          "dt": 1623531600,
-          "temp": 89.02,
-          "feels_like": 85.62,
-          "pressure": 1010,
-          "humidity": 22,
-          "dew_point": 45.28,
-          "uvi": 8.78,
-          "clouds": 0,
-          "visibility": 10000,
-          "wind_speed": 7.76,
-          "wind_deg": 79,
-          "wind_gust": 8.75,
-          "weather": [
-              {
-                  "id": 800,
-                  "main": "Clear",
-                  "description": "clear sky",
-                  "icon": "01d"
-              }
-            ]
-      }
-      forecast = [HourlyWeather.new(weather_data),HourlyWeather.new(weather_data)]
+      forecast =      [
+                        {:dt=>1623722400,
+                        :temp=>86.79,
+                        :feels_like=>85.33,
+                        :pressure=>1011,
+                        :humidity=>35,
+                        :dew_point=>55.89,
+                        :uvi=>0,
+                        :clouds=>1,
+                        :visibility=>10000,
+                        :wind_speed=>8.5,
+                        :wind_deg=>127,
+                        :wind_gust=>13.22,
+                        :weather=>[{:id=>800, :main=>"Clear", :description=>"clear sky", :icon=>"01d"}],
+                        :pop=>0},
+                       {:dt=>1623726000,
+                        :temp=>86.45,
+                        :feels_like=>85.55,
+                        :pressure=>1011,
+                        :humidity=>38,
+                        :dew_point=>57.85,
+                        :uvi=>0,
+                        :clouds=>1,
+                        :visibility=>10000,
+                        :wind_speed=>3.33,
+                        :wind_deg=>126,
+                        :wind_gust=>4.38,
+                        :weather=>[{:id=>800, :main=>"Clear", :description=>"clear sky", :icon=>"01n"}],
+                        :pop=>0}
+                      ]
       trip = Route.new(trip_data[:route], forecast)
 
       expect(trip.start_city).to eq("Denver,CO")
       expect(trip.end_city).to eq("Pueblo,CO")
-      expect(trip.travel_time).to eq("01 hour(s) and 52 minutes")
+      expect(trip.travel_time).to eq("01 hour(s) and 44 minutes")
       expect(trip.weather_at_eta).to be_a(Hash)
     end
   end
