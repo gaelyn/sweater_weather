@@ -15,5 +15,11 @@ RSpec.describe "Map Service" do
       expect(results).to be_a(Hash)
       expect(results).to have_key(:route)
     end
+
+    it 'can return data for a very long trip' do
+      results = MapService.fetch_route("New York,NY", "Los Angeles,CA")
+      expect(results).to be_a(Hash)
+      expect(results).to have_key(:route)
+    end
   end
 end
