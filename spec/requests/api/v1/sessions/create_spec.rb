@@ -7,7 +7,7 @@ RSpec.describe 'Sessions Create' do
   end
 
   describe 'Happy Path' do
-    it 'can create a new session when user logs in' do
+    it 'can create a new session when user logs in', :vcr do
       headers = {
         'Content-Type' => "application/json",
         'Accept' => "application/json"
@@ -28,7 +28,7 @@ RSpec.describe 'Sessions Create' do
   end
 
   describe 'Sad Path' do
-    it 'shows error if password is invalid' do
+    it 'shows error if password is invalid', :vcr do
       headers = {
         'Content-Type' => "application/json",
         'Accept' => "application/json"
@@ -43,7 +43,7 @@ RSpec.describe 'Sessions Create' do
       expect(response.status).to eq(400)
     end
 
-    it 'shows error if email is invalid' do
+    it 'shows error if email is invalid', :vcr do
       headers = {
         'Content-Type' => "application/json",
         'Accept' => "application/json"
@@ -58,7 +58,7 @@ RSpec.describe 'Sessions Create' do
       expect(response.status).to eq(400)
     end
 
-    it 'shows error if email or password not provided' do
+    it 'shows error if email or password not provided', :vcr do
       post '/api/v1/sessions'
       expect(response.body).to eq("{\"errors\":\"Email and password must be provided\"}")
       expect(response.status).to eq(401)

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Road Trip Create' do
   describe 'Happy Paths' do
-    it 'can create a road trip response' do
+    it 'can create a road trip response', :vcr do
+      @user = User.create!(email: "whatever@example.com", password: "password",
+                          password_confirmation: "password", api_key: "123456789")
       headers = {
         'Content-Type' => "application/json",
         'Accept' => "application/json"
@@ -28,7 +30,7 @@ RSpec.describe 'Road Trip Create' do
   end
 
   describe 'Sad Path' do
-    it 'returns a 401 error if api key is incorrect' do
+    it 'returns a 401 error if api key is incorrect', :vcr do
       @user = User.create!(email: "whatever@example.com", password: "password",
                           password_confirmation: "password", api_key: "123456789")
       headers = {
@@ -46,7 +48,7 @@ RSpec.describe 'Road Trip Create' do
       expect(response.status).to eq(401)
     end
 
-    it 'returns a 401 error if api key is missing' do
+    it 'returns a 401 error if api key is missing', :vcr do
       @user = User.create!(email: "whatever@example.com", password: "password",
                           password_confirmation: "password", api_key: "123456789")
       headers = {
