@@ -5,4 +5,9 @@ RSpec.describe 'Map Facade' do
     location = MapFacade.get_lat_long("denver,co")
     expect(location).to be_a(Location)
   end
+
+  it 'returns a route between two given destinations' do
+    route = MapFacade.get_road_trip("Denver,CO", "Pueblo,CO")
+    expect(route).to be_a(Route)
+  end
 end
