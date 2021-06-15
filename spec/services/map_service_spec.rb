@@ -8,4 +8,12 @@ RSpec.describe "Map Service" do
       expect(results[:results].first[:providedLocation][:location]).to eq("Denver,CO")
     end
   end
+
+  describe 'get road trip info' do
+    it 'can return data about a route between two points' do
+      results = MapService.fetch_route("Denver,CO", "Pueblo,CO")
+      expect(results).to be_a(Hash)
+      expect(results).to have_key(:route)
+    end
+  end
 end
