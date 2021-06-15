@@ -90,6 +90,5 @@ RSpec.describe 'Road Trip Create' do
       expect(trip[:data][:attributes][:travel_time]).to eq("impossible")
       expect(trip[:data][:attributes][:weather_at_eta]).to eq({})
     end
-
   end
 end
