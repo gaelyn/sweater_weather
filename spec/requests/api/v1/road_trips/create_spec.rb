@@ -20,10 +20,10 @@ RSpec.describe 'Road Trip Create' do
       expect(trip[:data][:attributes]).to have_key(:start_city)
       expect(trip[:data][:attributes]).to have_key(:end_city)
       expect(trip[:data][:attributes]).to have_key(:travel_time)
-      # expect(trip[:data][:attributes]).to have_key(:weather_at_eta)
-      # expect(trip[:data][:attributes][:weather_at_eta]).to be_a(Hash)
-      # expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
-      # expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
+      expect(trip[:data][:attributes]).to have_key(:weather_at_eta)
+      expect(trip[:data][:attributes][:weather_at_eta]).to be_a(Hash)
+      expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
+      expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
     end
   end
 end
