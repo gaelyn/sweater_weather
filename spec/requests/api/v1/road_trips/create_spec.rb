@@ -11,7 +11,7 @@ RSpec.describe 'Road Trip Create' do
       body = {
         "origin": "Denver,CO",
         "destination": "Pueblo,CO",
-        "api_key": "jgn983hy48thw9begh98h4539h4"
+        "api_key": "123456789"
       }
       post '/api/v1/road_trip', headers: headers, params: body.to_json
       trip = JSON.parse(response.body, symbolize_names: true)
@@ -24,6 +24,43 @@ RSpec.describe 'Road Trip Create' do
       expect(trip[:data][:attributes][:weather_at_eta]).to be_a(Hash)
       expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
       expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
+    end
+  end
+
+  describe 'Sad Path' do
+    it 'returns a 401 error if api key is incorrect' do
+      @user = User.create!(email: "whatever@example.com", password: "password",
+                          password_confirmation: "password", api_key: "123456789")
+      headers = {
+        'Content-Type' => "application/json",
+        'Accept' => "application/json"
+      }
+
+      body = {
+        "origin": "Denver,CO",
+        "destination": "Pueblo,CO",
+        "api_key": "987654321"
+      }
+      post '/api/v1/road_trip', headers: headers, params: body.to_json
+      expect(response.body).to eq("{\"errors\":\"Unauthorized\"}")
+      expect(response.status).to eq(401)
+    end
+
+    it 'returns a 401 error if api key is missing' do
+      @user = User.create!(email: "whatever@example.com", password: "password",
+                          password_confirmation: "password", api_key: "123456789")
+      headers = {
+        'Content-Type' => "application/json",
+        'Accept' => "application/json"
+      }
+
+      body = {
+        "origin": "Denver,CO",
+        "destination": "Pueblo,CO"
+      }
+      post '/api/v1/road_trip', headers: headers, params: body.to_json
+      expect(response.body).to eq("{\"errors\":\"Unauthorized\"}")
+      expect(response.status).to eq(401)
     end
   end
 end
