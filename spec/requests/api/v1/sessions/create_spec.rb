@@ -9,8 +9,8 @@ RSpec.describe 'Sessions Create' do
   describe 'Happy Path' do
     it 'can create a new session when user logs in', :vcr do
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -30,8 +30,8 @@ RSpec.describe 'Sessions Create' do
   describe 'Sad Path' do
     it 'shows error if password is invalid', :vcr do
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -45,8 +45,8 @@ RSpec.describe 'Sessions Create' do
 
     it 'shows error if email is invalid', :vcr do
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {

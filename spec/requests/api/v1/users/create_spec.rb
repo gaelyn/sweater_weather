@@ -4,8 +4,8 @@ RSpec.describe 'Users Create' do
   describe 'Happy Paths' do
     it 'can create a user and return an api key' do
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -26,8 +26,8 @@ RSpec.describe 'Users Create' do
   describe 'Sad Path' do
     it 'shows error if missing information' do
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -42,8 +42,8 @@ RSpec.describe 'Users Create' do
 
     it "shows error if passwords don't match" do
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -59,8 +59,8 @@ RSpec.describe 'Users Create' do
     it 'shows error if user already exists with given email' do
       User.create!(email: "whatever@example.com", password: "password", password_confirmation: "password", api_key: "xxxxxx")
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -78,8 +78,8 @@ RSpec.describe 'Users Create' do
   describe 'Edge Case' do
     it 'shows error if email entered is an invalid format' do
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {

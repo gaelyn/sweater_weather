@@ -6,8 +6,8 @@ RSpec.describe 'Road Trip Create' do
       @user = User.create!(email: "whatever@example.com", password: "password",
                           password_confirmation: "password", api_key: "123456789")
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -34,8 +34,8 @@ RSpec.describe 'Road Trip Create' do
       @user = User.create!(email: "whatever@example.com", password: "password",
                           password_confirmation: "password", api_key: "123456789")
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -52,8 +52,8 @@ RSpec.describe 'Road Trip Create' do
       @user = User.create!(email: "whatever@example.com", password: "password",
                           password_confirmation: "password", api_key: "123456789")
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
@@ -71,8 +71,8 @@ RSpec.describe 'Road Trip Create' do
       @user = User.create!(email: "test@test.com", password: "password",
                           password_confirmation: "password", api_key: "321xyz")
       headers = {
-        'Content-Type' => "application/json",
-        'Accept' => "application/json"
+        'Content-Type': "application/json",
+        'Accept': "application/json"
       }
 
       body = {
