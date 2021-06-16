@@ -1,6 +1,6 @@
 ## About
-![Image](https://media.giphy.com/media/26u6dryuZH98z5KuY/giphy.gif)
-<iframe src="https://giphy.com/embed/26u6dryuZH98z5KuY" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nycgifathon-26u6dryuZH98z5KuY">via GIPHY</a></p>
+![Image](https://media.giphy.com/media/26u6dryuZH98z5KuY/giphy.gif)  
+[via GIPHY](https://giphy.com/embed/26u6dryuZH98z5KuY)
 
 Sweater Weather is a fictional backend for an application to plan road trips. This app will allow users to see the current weather as well as the forecasted weather at the destination.  
 The front-end will communicate with the back-end through an API. The goal of this project is to build and expose that API in a way that satisfies the front-end team’s requirements using service oriented architecture.
