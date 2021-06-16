@@ -73,7 +73,10 @@ RSpec.describe 'Users Create' do
       expect(response.status).to eq(409)
     end
 
-    it 'shows error if email is invalid format' do
+  end
+
+  describe 'Edge Case' do
+    it 'shows error if email entered is an invalid format' do
       headers = {
         'Content-Type' => "application/json",
         'Accept' => "application/json"
