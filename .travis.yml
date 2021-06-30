@@ -1,12 +1,12 @@
 language: ruby
-rbenv:
+rvm:
 - 2.5.3
 addons:
   postgresql: 9.6
-before_install:
-  - gem install bundler
-  - nvm install node
-  - bundle
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure:
