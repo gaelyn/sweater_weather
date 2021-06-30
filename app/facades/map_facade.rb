@@ -9,7 +9,7 @@ class MapFacade
     def get_road_trip(point_a, point_b)
       json = MapService.fetch_route(point_a, point_b)
       if json[:info][:statuscode] != 0
-        RouteError.new(point_a,point_b)
+        RouteError.new(point_a, point_b)
       else
         forecast = forecast(point_b)
         Route.new(json[:route], forecast)
@@ -18,7 +18,7 @@ class MapFacade
 
     def forecast(point_b)
       location = MapFacade.get_lat_long(point_b)
-      ForecastFacade.get_hourly_weather_for_trip(location.lat,location.long)
+      ForecastFacade.get_hourly_weather_for_trip(location.lat, location.long)
     end
   end
 end

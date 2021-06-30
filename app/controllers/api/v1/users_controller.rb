@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       user.api_key
-      render json: UserSerializer.new(user), status: 201
+      render json: UserSerializer.new(user), status: :created
     elsif User.find_by(email: params[:email])
       render json: { errors: 'Email already registered' }, status: :conflict
     else

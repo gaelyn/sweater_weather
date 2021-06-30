@@ -21,9 +21,9 @@ RSpec.describe 'CurrentWeather' do
                  :weather=>[{:id=>800, :main=>"Clear", :description=>"clear sky", :icon=>"01d"}]
                }
       current_weather = CurrentWeather.new(current)
-      expect(current_weather.datetime).to eq("2021-06-12 13:23:18 -0500")
-      expect(current_weather.sunrise).to eq("2021-06-12 06:31:29 -0500")
-      expect(current_weather.sunset).to eq("2021-06-12 21:28:26 -0500")
+      expect(current_weather.datetime).to eq("2021-06-12 18:23:18 UTC")
+      expect(current_weather.sunrise).to eq("2021-06-12 11:31:29 UTC")
+      expect(current_weather.sunset).to eq("2021-06-13 02:28:26 UTC")
       expect(current_weather.temperature).to eq(82.89)
       expect(current_weather.feels_like).to eq(80.82)
       expect(current_weather.humidity).to eq(26)
