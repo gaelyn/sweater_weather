@@ -1,12 +1,11 @@
 language: ruby
-rvm:
+rbenv:
 - 2.5.3
-bundler_args: --jobs=2
-script:
-  - bundle exec rails db:{create,migrate} RAILS_ENV=test
-  - bundle exec rspec
-cache: bundler
-services:
-  - postgresql
 addons:
-  postgresql: "9.6"
+  postgresql: 9.6
+before_install:
+  - gem install bundler
+  - bundle
+script:
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
