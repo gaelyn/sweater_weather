@@ -1,0 +1,17 @@
+language: ruby
+rbenv:
+- 2.5.3
+addons:
+  postgresql: 9.6
+script:
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: RY70CYudJ6CZh2O1QDlWzpjVtSfrf/8/6M6qFt2KPiUR8+FeR1bVkp7H2P3nWbqkYTYGulm68m0i+wOUBDGK0nFrQhXitBOTLrd16n6phssrTPAgAvrlvSBFmd7MXVVvLt9f35LAULFklx5YTBu84FL+UzjQRbAevCw+Jov1yHiXKp6IWHwbmU87It0aFIUFw2y4Pn4TPVhFqp5jJacaCsXfJ7QOAHvVLCR0BHUw3Am3ks+DfrKP+O69RmqPRD/p4es+x9S9Lp5xcQJtfeSB/mpfnXFXR4tRfKdXPHXnW0gbfuphOQZeqSxOPrReCE5dCoTk3hSs2NBx4xdgrshGYSys8INBm5TN6gzMdJJ9Z+D3MHpwX/3n87ENV+3bAzbF7Ud7DjqfDqJSlx4aFmtIjeYBOd6NDIPpDE/iwPSFdCTEp6eWn4F4Y3lnGjCvQVa+lUil0JJqzGujgpkfd/yLenpwUuKiLH6sgMH+YWVaZJjV4L6RmaV574tZ2x8argLj52I9zs1gpMuj09U3OtyPca+SutluuiQkVFs/NCzAdJyYs3zXxWx7LJM8CUqzKYV8ysLWu5W3FAW7h+Xx+deBPNHYGzD2o4BA9zEJExrqxf49usyY6mfDthcPNw5MUyDs9WV13cSSuvAplr3NH2fjB4u5AXUKfqZRYY0PxISCf7U=
+  app: sweater-weather-2102
+  on:
+    repo: gaelyn/sweater_weather
+    branch: main
+  skip_cleanup: 'true'
