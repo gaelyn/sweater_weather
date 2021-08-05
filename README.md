@@ -47,13 +47,13 @@ The following are all API endpoints. Note, some endpoints have optional or requi
 
 ### Background Image:
 
-| Method   | URL                                      | Description                              |
+| Method   | URI                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
 | `GET`    | `/api/v1/backgrounds?location=<location>`| Retrieves appropriate background image for city|
 
 ### Users:
 
-| Method   | URL                                      | Description                              |
+| Method   | URI                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
 | `POST`   | `/api/v1/users`                          |  Creates user in DB and returns user email and api_key  |
 | `POST`   | `/api/v1/sessions`                       |  Creates a session and returns user email and api_key |
